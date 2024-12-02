@@ -243,7 +243,8 @@ class Definition:
             port_type.resolve(self)
 
         for binding in self.bindings.values():
-            binding.resolve(self)
+            if self.imports:
+                binding.resolve(self)
 
         for service in self.services.values():
             service.resolve(self)
